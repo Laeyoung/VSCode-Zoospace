@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:${VARIANT}
 # Install VSCODE Server.
 ARG VSC_SERVER=3.7.1
 WORKDIR /usr
-RUN wget https://github.com/cdr/code-server/releases/download/v$VSC_SERVER/code-server-$VSC_SERVER-linux-amd64.tar.gz
+RUN wget -q https://github.com/cdr/code-server/releases/download/v$VSC_SERVER/code-server-$VSC_SERVER-linux-amd64.tar.gz
 RUN tar xf code-server-$VSC_SERVER-linux-amd64.tar.gz
 RUN code-server-$VSC_SERVER-linux-amd64/bin/code-server --install-extension ms-python.python --install-extension dbaeumer.vscode-eslint --install-extension auchenberg.vscode-browser-preview
 
