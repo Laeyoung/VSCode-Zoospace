@@ -3,10 +3,11 @@ ARG VARIANT=12
 FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:${VARIANT}
 
 # Install VSCODE Server.
+ARG VSC_SERVER=3.7.1
 WORKDIR /usr
-RUN wget https://github.com/cdr/code-server/releases/download/v3.6.0/code-server-3.6.0-linux-amd64.tar.gz
-RUN tar xf code-server-3.6.0-linux-amd64.tar.gz
-RUN code-server-3.6.0-linux-amd64/bin/code-server --install-extension ms-python.python dbaeumer.vscode-eslint
+RUN wget https://github.com/cdr/code-server/releases/download/v$VSC_SERVER/code-server-$VSC_SERVER-linux-amd64.tar.gz
+RUN tar xf code-server-$VSC_SERVER-linux-amd64.tar.gz
+RUN code-server-$VSC_SERVER-linux-amd64/bin/code-server --install-extension ms-python.python dbaeumer.vscode-eslint
 
 RUN mkdir /workspace
 RUN mkdir -p /root/.ssh
@@ -19,7 +20,7 @@ ENV SHELL /bin/bash
 # COPY entrypoint.vscode.sh /scripts/entrypoint.sh
 
 EXPOSE 8000
-CMD /usr/code-server-3.6.0-linux-amd64/bin/code-server /workspace/$REPO_NAME --bind-addr=0.0.0.0:8000 --auth none
+CMD /usr/code-server-$VSC_SERVER-linux-amd64/bin/code-server /workspace --bind-addr=0.0.0.0:8000 --auth none
 
 
 
