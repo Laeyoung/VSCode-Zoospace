@@ -16,10 +16,10 @@ WORKDIR /workspace
 ENV LC_ALL C.UTF-8
 ENV SHELL /bin/bash
 
-COPY entrypoint.vscode.sh /scripts/entrypoint.sh
+# COPY entrypoint.vscode.sh /scripts/entrypoint.sh
 
 EXPOSE 8000
-CMD /scripts/entrypoint.sh
+CMD /usr/code-server-3.6.0-linux-amd64/bin/code-server /workspace/$REPO_NAME --bind-addr=0.0.0.0:8000 --auth none
 
 
 
