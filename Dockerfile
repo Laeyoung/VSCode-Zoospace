@@ -6,7 +6,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:${VARIANT}
 WORKDIR /usr
 RUN wget https://github.com/cdr/code-server/releases/download/v3.6.0/code-server-3.6.0-linux-amd64.tar.gz
 RUN tar xf code-server-3.6.0-linux-amd64.tar.gz
-RUN code-server-3.6.0-linux-amd64/bin/code-server --install-extension ms-python.python
+RUN code-server-3.6.0-linux-amd64/bin/code-server --install-extension ms-python.python dbaeumer.vscode-eslint
 
 RUN mkdir /workspace
 RUN mkdir -p /root/.ssh
