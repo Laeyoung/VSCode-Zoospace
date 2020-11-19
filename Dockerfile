@@ -10,7 +10,7 @@ RUN tar xf code-server-$VSC_SERVER-linux-amd64.tar.gz
 RUN code-server-$VSC_SERVER-linux-amd64/bin/code-server --install-extension ms-python.python --install-extension dbaeumer.vscode-eslint --install-extension auchenberg.vscode-browser-preview
 
 # Install Chrome
-RUN get https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 #RUN sudo dpkg -i google-chrome-stable_current_amd64.deb
 RUN sudo apt -y install ./google-chrome-stable_current_amd64.deb
 
