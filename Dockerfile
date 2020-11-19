@@ -4,6 +4,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:${VARIANT}
 
 # Install VSCODE Server.
 ARG VSC_SERVER=3.7.1
+ENV VSC_SERVER=${VSC_SERVER}
 WORKDIR /usr
 RUN wget -q https://github.com/cdr/code-server/releases/download/v$VSC_SERVER/code-server-$VSC_SERVER-linux-amd64.tar.gz
 RUN tar xf code-server-$VSC_SERVER-linux-amd64.tar.gz
