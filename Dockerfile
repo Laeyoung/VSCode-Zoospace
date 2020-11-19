@@ -2,6 +2,14 @@
 ARG VARIANT=12
 FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:${VARIANT}
 
+# Install Chrome
+RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN sudo apt-get update
+RUN sudo apt -y --fix-broken install ./google-chrome-stable_current_amd64.deb
+
+# Copy Browser Preview Extension settings
+COPY vscode.settings.json /root/.local/share/code-server/User/settings.json
+
 # Install VSCODE Server.
 ARG VSC_SERVER=3.7.1
 ENV VSC_SERVER=${VSC_SERVER}
@@ -10,13 +18,6 @@ RUN wget -q https://github.com/cdr/code-server/releases/download/v$VSC_SERVER/co
 RUN tar xf code-server-$VSC_SERVER-linux-amd64.tar.gz
 RUN code-server-$VSC_SERVER-linux-amd64/bin/code-server --install-extension ms-python.python --install-extension dbaeumer.vscode-eslint --install-extension auchenberg.vscode-browser-preview
 
-# Install Chrome
-RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN sudo apt-get update
-#RUN sudo dpkg -i google-chrome-stable_current_amd64.deb
-RUN sudo apt -y --fix-broken install ./google-chrome-stable_current_amd64.deb
-
-COPY vscode.settings.json /root/.local/share/code-server/User/settings.json
 
 RUN mkdir /workspace
 RUN mkdir -p /root/.ssh
