@@ -11,8 +11,9 @@ RUN code-server-$VSC_SERVER-linux-amd64/bin/code-server --install-extension ms-p
 
 # Install Chrome
 RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN sudo dpkg -i google-chrome-stable_current_amd64.deb
-RUN sudo apt -y install ./google-chrome-stable_current_amd64.deb
+RUN sudo apt-get update
+#RUN sudo dpkg -i google-chrome-stable_current_amd64.deb
+RUN sudo apt -y --fix-broken install ./google-chrome-stable_current_amd64.deb
 
 COPY vscode.settings.json /root/.local/share/code-server/User/settings.json
 
