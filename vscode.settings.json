@@ -1,0 +1,5 @@
+{
+    "browser-preview.startUrl": "https://google.com",
+    "browser-preview.chromeExecutable": "/usr/bin/google-chrome",
+    "view-in-browser.customBrowser": "chrome"
+}
