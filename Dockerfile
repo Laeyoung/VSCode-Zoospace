@@ -13,6 +13,8 @@ RUN code-server-$VSC_SERVER-linux-amd64/bin/code-server --install-extension ms-p
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt -y install ./google-chrome-stable_current_amd64.deb
 
+COPY vscode.settings.json /root/.local/share/code-server/User/settings.json
+
 RUN mkdir /workspace
 RUN mkdir -p /root/.ssh
 VOLUME /root/.ssh
