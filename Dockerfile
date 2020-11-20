@@ -1,14 +1,6 @@
 # [Choice] Node.js version: 14, 12, 10
-#ARG VARIANT=12
-#FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:${VARIANT}
-
-ARG VARIANT=3
-FROM mcr.microsoft.com/vscode/devcontainers/python:${VARIANT}
-
-# [Option] Install Node.js
-ARG INSTALL_NODE="true"
-ARG NODE_VERSION="lts/*"
-RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+ARG VARIANT=12
+FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:${VARIANT}
 
 # Install Chrome
 RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
